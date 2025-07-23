@@ -1,11 +1,11 @@
 # Distance_Traveled_Algorithm
 # TGSIM Trajectory-Based Distance Estimation
 
-This repository implements a custom algorithm to compute lane-aligned traveled distances for all vehicles in the TGSIM Stationary Trajectory Dataset. The approach constructs a lane-specific reference trajectory by chaining vehicle segments and then projects other vehicles onto the reference to estimate their traveled distances. This method overcomes the limitations of standard Euclidean accumulation, particularly on curved roads.
+This repository implements a custom algorithm to compute lane-aligned distance traveled for all vehicles in the TGSIM Stationary Trajectory Dataset. The approach constructs a lane-specific reference trajectory by chaining vehicle segments and then projects other vehicles onto the reference to estimate their tdistance traveled. This method overcomes the limitations of standard Euclidean accumulation, particularly on curved roads, and helps with pinpointing start locations of each vehicle in the time-space diagram plot.
 
 ---
 
-## 📁 Input
+## Input
 
 - `TGSIM_Full.csv`: Main vehicle trajectory dataset with the following required columns:
   - `id`: Vehicle ID
@@ -17,7 +17,7 @@ This repository implements a custom algorithm to compute lane-aligned traveled d
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 ### 1. `compute_travelled_distance(df)`
 Computes per-vehicle cumulative Euclidean distance using `(xloc_kf, yloc_kf)`, grouped by `id`.
@@ -39,7 +39,7 @@ For every vehicle that is not the reference:
 
 ---
 
-## ✅ Output
+## Output
 
 - `processed_data_full.csv`: A fully updated dataset with a new column:
   - `travelled_distance`: Aligned distance along the lane-specific reference trajectory
@@ -48,9 +48,9 @@ For every vehicle that is not the reference:
 
 ---
 
-## 🚀 Run Instructions
+## Run Instructions
 
 ```bash
-# Step 1: Prepare your CSV as TGSIM_Full.csv
+# Step 1: Prepare your TGSIM Stationary Data CSV as TGSIM_Full.csv (can be downloaded from this link: https://data.transportation.gov/Automobiles/Third-Generation-Simulation-Data-TGSIM-I-90-I-94-S/9uas-hf8b/about_data)
 # Step 2: Run the main script
 python your_script_name.py
